@@ -6,6 +6,7 @@
   height: 150px;
   padding: 20px;
   color: white;
+  margin-bottom: 25px;
 }
 
 .App-title {
@@ -14,4 +15,10 @@
 
 .App-intro {
   font-size: large;
+}
+
+.App-logo {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
 }

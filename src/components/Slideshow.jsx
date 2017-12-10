@@ -29,12 +29,12 @@ class Slideshow extends Component {
     const flim = this.state.flim
     const settings = {
       dots: true,
-         infinite: true,
-         slidesToShow: 3,
-         slidesToScroll: 1,
-         autoplay: true,
-         autoplaySpeed: 2000,
-         pauseOnHover: true
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      pauseOnHover: true
     };
     const listFlims = flim.map((d) => <div className="card"><h1>{d.title}</h1> <p>{d.description}</p></div>)
     return (
