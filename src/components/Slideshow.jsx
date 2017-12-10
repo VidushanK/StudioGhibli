@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import '../assets/styles/slideshow.css';
 
 class Slideshow extends Component {
   constructor(){
     super()
     this.state ={
       flim: [],
-      title: [],
-      content: [],
       loading: false,
       fetched: false,
     };
@@ -22,19 +21,12 @@ class Slideshow extends Component {
       this.setState({
         flim: data
       })
-      // data.forEach(flim =>{
-      //   console.log(flim.title)
-      //   this.setState({
-      //     title: flim.title,
-      //     content: flim.description
-      //   });
-      // });
     });
   }
 
   render(){
     const flim = this.state.flim
-    const listFlims = flim.map ((d) => <p>{d.title} {d.description}</p>)
+    const listFlims = flim.map((d) => <div className="card"><h1>{d.title}</h1> <p>{d.description}</p></div>)
     return (
       <div>
       {listFlims}
