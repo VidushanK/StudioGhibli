@@ -4,7 +4,9 @@ class Slideshow extends Component {
   constructor(){
     super()
     this.state ={
-      movies: [],
+      flim: [],
+      title: [],
+      content: [],
       loading: false,
       fetched: false,
     };
@@ -14,16 +16,29 @@ class Slideshow extends Component {
     this.setState({
       loading: true
     });
-    fetch('https://ghibliapi.herokuapp.com/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49')
+    fetch('https://ghibliapi.herokuapp.com/films')
     .then(response => response.json())
-    .then((data) =>{
-      console.log(data)
+    .then((data) => {
+      this.setState({
+        flim: data
+      })
+      // data.forEach(flim =>{
+      //   console.log(flim.title)
+      //   this.setState({
+      //     title: flim.title,
+      //     content: flim.description
+      //   });
+      // });
     });
   }
 
   render(){
-    return(
-      <h1> Hello World </h1>
+    const flim = this.state.flim
+    const listFlims = flim.map ((d) => <p>{d.title} {d.description}</p>)
+    return (
+      <div>
+      {listFlims}
+      </div>
     )
   }
 }
