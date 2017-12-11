@@ -20,12 +20,14 @@ class Slideshow extends Component {
     .then(response => response.json())
     .then((data) => {
       this.setState({
-        flim: data
+        flim: data,
+        fetched: true
       })
     });
   }
 
   render(){
+    const fetched = this.state.fetched
     const flim = this.state.flim
     const settings = {
       dots: true,
@@ -36,14 +38,22 @@ class Slideshow extends Component {
       autoplaySpeed: 2000,
       pauseOnHover: true
     };
-    const listFlims = flim.map((d) => <div className="card"><h1>{d.title}</h1> <p>{d.description}</p></div>)
-    return (
-      <div>
-      <Slider {...settings}>
-      {listFlims}
-      </Slider>
-      </div>
-    )
+    if (fetched == false) {
+      return(
+        <div>
+          <h1>Error with API, please try again!</h1>
+        </div>
+      )
+    } else {
+      const listFlims = flim.map((d) => <div className="card"><h1>{d.title}</h1> <p>{d.description}</p></div>)
+      return (
+        <div>
+        <Slider {...settings}>
+        {listFlims}
+        </Slider>
+        </div>
+      )
+    }
   }
 }
 
